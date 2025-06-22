@@ -1,0 +1,58 @@
+Create or replace Function GetGMY(N In Number :=100) Return number is
+    G number(4);
+    M number(4);
+    Y number(4);
+    i int;
+    Begin
+For i In 1..N Loop
+--Y:=N-(i+M)--
+--M:=N-(i+Y);--
+--Y:=(N/5 = (i/200)-3/5*M)--
+--M:=N-(i+N/5-(i/200)-3/5*M)--
+--5M:=5N-5i-N + (i/40)+3*M--
+M:=(4*N -5*i +(i/40))/2;
+Y:=N-(i+M);
+IF ((M>0) and  (Y>0)) Then
+DBMS_OUTPUT.PUT_LINE('O = '||I||' M= '||M||' Y = '||Y):
+End if;
+END LOOP;
+return (M);
+end;
+/
+
+----------------------------------------------------------
+ SET SERVEROUTPUT ON;
+
+SQL> Create or replace Function GetGMY(N In Number :=100) Return number is
+  2      G number(4);
+  3      M number(4);
+  4      Y number(4);
+  5      i int;
+  6      Begin
+  7  For i In 1..N Loop
+  8  M:=(40*4*N - 40*5*i +i)/(40*2);
+  9  Y:=N-(i+M);
+ 10  IF ((M>0) and  (Y>0)) Then
+ 11  DBMS_OUTPUT.PUT_LINE('G = '||I||' M= '||M||' Y = '||Y);
+ 12  End if;
+ 13  END LOOP;
+ 14  end;
+ 15  /
+select  GetGMY() from dual;
+
+
+
+OUTPUT:
+G = 68 M= 31 Y = 1
+G = 69 M= 28 Y = 3
+G = 70 M= 26 Y = 4
+G = 71 M= 23 Y = 6
+G = 72 M= 21 Y = 7
+G = 73 M= 18 Y = 9
+G = 74 M= 16 Y = 10
+G = 75 M= 13 Y = 12
+G = 76 M= 11 Y = 13
+G = 77 M= 8 Y = 15
+G = 78 M= 6 Y = 16
+G = 79 M= 3 Y = 18
+G = 80 M= 1 Y = 19
