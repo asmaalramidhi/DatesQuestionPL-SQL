@@ -1,3 +1,16 @@
+Your father gave you 100 riyals and asked you to buy 3 types of dates under the
+following two conditions:
+1. You must spend the entire 100 riyals.
+2. You must buy exactly 100 kilograms of dates.
+
+The prices of the dates are:
+• Type A (Premium): 5 riyals per kilogram
+• Type B (Good): 3 riyals per kilogram
+• Type C (Regular): 1 riyal for 3 kilograms (i.e., 3 kg for 1 riyal)
+
+Question:
+How many kilograms of each type of date should you buy to meet both conditions?
+
 Create or replace Function GetGMY(N In Number :=100) Return number is
     G number(4);
     M number(4);
